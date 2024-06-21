@@ -1,0 +1,23 @@
+[filter "lfs"]
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
+[user]
+name = Godbless Nyagawa
+email = godblessnyagawa@gmail.com
+[core]
+editor = code --wait
+autocrlf = true
+[diff]
+tool = vscode
+[difftool "vscode"]
+cmd = "code --wait --diff $LOCAL $REMOTE"
+[gui]
+recentrepo = C:/Users/Njox/Documents/GitHub/30-Days-Of-React
+recentrepo = C:/Users/Njox/Documents/GitHub/Njox/C-Learning-lab
+[alias]
+lg = log --pretty=format: '%an committed %h'
+st = status
+co = checkout
+cm = commit
