@@ -1,74 +1,109 @@
-" .vimrc
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" Set encoding to UTF-8
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Git plugin
+Plugin 'tpope/vim-fugitive'
+
+" Syntax highlighting
+Plugin 'sheerun/vim-polyglot'
+
+" File explorer
+Plugin 'preservim/nerdtree'
+
+" Status line
+Plugin 'vim-airline/vim-airline'
+
+" Theme
+Plugin 'morhetz/gruvbox'
+
+" All of your Plugins must be added before this line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+
+" Set encoding and file format
 set encoding=utf-8
-
-" Enable line numbers
-set number
+set fileformat=unix
 
 " Enable syntax highlighting
 syntax on
 
-" Set color scheme
-colorscheme desert
+" Set line numbers
+set number
+set relativenumber
 
-" Highlight the current line
-set cursorline
-
-" Set the default tab width and convert tabs to spaces
-set tabstop=4
-set shiftwidth=4
+" Set tab settings
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 " Enable auto-indentation
-set autoindent
 set smartindent
+set autoindent
 
-" Show matching parentheses
-set showmatch
-
-" Enable incremental search
-set incsearch
-
-" Ignore case when searching
+" Set search settings
 set ignorecase
-" Override ignore case if search pattern contains uppercase letters
 set smartcase
-
-" Enable command line completion
-set wildmenu
+set incsearch
+set hlsearch
 
 " Enable mouse support
 set mouse=a
 
-" Set the clipboard to use the system clipboard
+" Show current line in the status line
+set cursorline
+
+" Set background color
+set background=dark
+
+" Show matching brackets
+set showmatch
+
+" Enable line wrapping
+set wrap
+
+" Use system clipboard
 set clipboard=unnamedplus
 
-" Set up backspace to behave more intuitively
-set backspace=indent,eol,start
+" Set up file type detection and indentation
+filetype plugin indent on
 
-" Customize the status line
-set statusline=%F%m%r%h%w\[FORMAT=%{&fileformat}\]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]
+" Set colors for different file types
+autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd FileType html setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd FileType css setlocal tabstop=2 shiftwidth=2 expandtab
 
-" Enable syntax highlighting for specific file types
-au BufRead,BufNewFile *.py set filetype=python
-au BufRead,BufNewFile *.js set filetype=javascript
+" Key mappings
+nnoremap <C-n> :NERDTreeToggle<CR> " Toggle NERDTree
+nnoremap <C-p> :Files<CR>           " Fuzzy file finder
+nnoremap <Leader>r :source %<CR>    " Reload current .vimrc file
 
-" Set up a basic key mapping for saving and quitting
-nnoremap <leader>w :w<CR>
-nnoremap <leader>q :q<CR>
+" Additional settings for better experience
+set wrapscan                  " Wrap search
+set showcmd                   " Show command in bottom bar
+set hidden                    " Allow switching buffers without saving
 
-" Load plugins (assuming you're using a plugin manager like vim-plug)
-call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-sensible'
-Plug 'preservim/nerdtree'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-call plug#end()
+" Status line settings
+let g:airline_theme='dark'
+let g:airline_powerline_fonts=1
 
-" NERDTree settings
-map <C-n> :NERDTreeToggle<CR>
-autocmd VimEnter * NERDTree | wincmd p
-
-" FZF settings
-nnoremap <leader>f :Files<CR>
+" Set colorscheme
+colorscheme gruvbox
+set termguicolors            " Enable 24-bit RGB colors
