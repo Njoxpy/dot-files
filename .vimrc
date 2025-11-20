@@ -1,109 +1,159 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
+" --- Vundle Setup (Required) ---
+set nocompatible
+filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" Git plugin
-Plugin 'tpope/vim-fugitive'
+" --- Essential Plugins ---
+Plugin 'tpope/vim-fugitive'          " Git integration
+Plugin 'sheerun/vim-polyglot'        " Extensive syntax highlighting
+Plugin 'preservim/nerdtree'          " File explorer
 
-" Syntax highlighting
-Plugin 'sheerun/vim-polyglot'
+" --- VS Code Aesthetics & Functionality ---
+" 1. Fuzzy File Finder (Crucial VS Code Feature)
+Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/fzf'
 
-" File explorer
-Plugin 'preservim/nerdtree'
-
-" Status line
+" 2. Status Line
 Plugin 'vim-airline/vim-airline'
 
-" Theme
+" 3. Theme
 Plugin 'morhetz/gruvbox'
 
-" All of your Plugins must be added before this line
-call vundle#end()            " required
-filetype plugin indent on    " required
+" 4. Icons (Requires Nerd Font)
+Plugin 'ryanoasis/vim-devicons'
 
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
+" 5. VS Code-like Popups/IntelliSense (LSP Core)
+Plugin 'neoclide/coc.nvim'
 
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" 6. WakaTime
+Plugin 'wakatime/vim-wakatime'
 
-" Set encoding and file format
+" 7. Visual Indentation Guides (Fixed Plugin)
+Plugin 'preservim/vim-indent-guides' 
+
+" --- Vundle End ---
+call vundle#end()
+filetype plugin indent on
+
+" --- General Settings ---
 set encoding=utf-8
 set fileformat=unix
+set termguicolors             " Enable 24-bit RGB colors (essential for themes like gruvbox)
+colorscheme gruvbox
+set background=dark
 
-" Enable syntax highlighting
+" --- UI Enhancements (Visual Clarity) ---
 syntax on
-
-" Set line numbers
 set number
-set relativenumber
+set relativenumber            " Show relative line numbers (VS Code-like quick jump)
+set cursorline                " Highlight the current line
+set showmatch                 " Highlight matching brackets
+set showcmd                   " Show command in bottom bar
+set hidden                    " Allow switching buffers without saving (VS Code behavior)
+set wrap                      " Enable line wrapping
+set wrapscan                  " Wrap search
+set clipboard=unnamedplus     " Use system clipboard
+set ttymouse=sgr              " Enable scroll wheel in splits
 
-" Set tab settings
+" --- Indentation & Tabs ---
 set tabstop=2
 set shiftwidth=2
-set expandtab
-
-" Enable auto-indentation
+set expandtab                 " Use spaces instead of tabs
 set smartindent
 set autoindent
 
-" Set search settings
+" File type-specific settings 
+autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd FileType html setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd FileType css setlocal tabstop=2 shiftwidth=2 expandtab
+
+" --- Search Settings ---
 set ignorecase
 set smartcase
 set incsearch
 set hlsearch
 
-" Enable mouse support
+" --- Mouse Support ---
 set mouse=a
 
-" Show current line in the status line
-set cursorline
+" --- Key Mappings (VS Code feel) ---
+" Toggle NERDTree (File explorer)
+nnoremap <C-n> :NERDTreeToggle<CR>
 
-" Set background color
-set background=dark
+" Fuzzy File Finder (VS Code's Ctrl+P/Cmd+P experience)
+nnoremap <C-p> :Files<CR>
 
-" Show matching brackets
-set showmatch
+" Fuzzy Text/Buffer Finder
+nnoremap <Leader>b :Buffers<CR>
 
-" Enable line wrapping
-set wrap
+" Reload current .vimrc file
+nnoremap <Leader>r :source %<CR>
 
-" Use system clipboard
-set clipboard=unnamedplus
+" Smart Tab/Split Navigation (VS Code Window Switching)
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
-" Set up file type detection and indentation
-filetype plugin indent on
+" --- CoC (IntelliSense) Mappings ---
+" Use <tab> for completion and snippets
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" Set colors for different file types
-autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd FileType html setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd FileType css setlocal tabstop=2 shiftwidth=2 expandtab
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1] =~ '\s'
+endfunction
 
-" Key mappings
-nnoremap <C-n> :NERDTreeToggle<CR> " Toggle NERDTree
-nnoremap <C-p> :Files<CR>           " Fuzzy file finder
-nnoremap <Leader>r :source %<CR>    " Reload current .vimrc file
+" Use C-c to force close CoC windows
+inoremap <C-c> <Esc>
 
-" Additional settings for better experience
-set wrapscan                  " Wrap search
-set showcmd                   " Show command in bottom bar
-set hidden                    " Allow switching buffers without saving
+" GoTo definitions (VS Code's F12)
+nmap <silent> gd <Plug>(coc-definition)
+" Show diagnostics (errors, warnings)
+nmap <silent> <leader>d <Plug>(coc-diagnostic-next)
 
-" Status line settings
-let g:airline_theme='dark'
+" --- Airline Status Line Settings ---
+let g:airline_theme='gruvbox' 
 let g:airline_powerline_fonts=1
 
-" Set colorscheme
-colorscheme gruvbox
-set termguicolors            " Enable 24-bit RGB colors
+" ==============================================================================
+" --- NEW ENHANCEMENTS START HERE ---
+" ==============================================================================
+
+" --- 1. Visual Indentation Guides Configuration (vim-indent-guides) ---
+" Enable the guides upon Vim startup
+let g:indent_guides_enable_on_vim_startup = 1
+" Set the character for the guide (subtle dotted line)
+let g:indent_guides_guide_char = '┊' 
+" Guide width (1 makes it thin and clean)
+let g:indent_guides_guide_size = 1
+" Use different colors for alternating indent levels (Optional: makes it look clean)
+let g:indent_guides_auto_colors = 1 
+
+
+" --- 2. CoC Visual Diagnostics (Error/Warning Icons in Sign Column) ---
+" This uses Nerd Font icons for clear error feedback, like VS Code.
+" Note: This must be defined AFTER 'colorscheme gruvbox'
+
+" Define colors for diagnostic signs (using Gruvbox palette)
+autocmd ColorScheme * highlight CocErrorSign guifg=#fb4934 guibg=none
+autocmd ColorScheme * highlight CocWarningSign guifg=#fabd2f guibg=none
+autocmd ColorScheme * highlight CocInfoSign guifg=#83a598 guibg=none
+autocmd ColorScheme * highlight CocHintSign guifg=#b8bb26 guibg=none
+
+" Define the Nerd Font symbols for each diagnostic type
+if exists('*sign_define')
+    "  (Exclamation Triangle),  (Warning Sign),  (Info Circle), 💡 (Lightbulb)
+    call sign_define('CocError', {'text': '', 'texthl': 'CocErrorSign'})
+    call sign_define('CocWarning', {'text': '', 'texthl': 'CocWarningSign'})
+    call sign_define('CocInfo', {'text': '', 'texthl': 'CocInfoSign'})
+    call sign_define('CocHint', {'text': '💡', 'texthl': 'CocHintSign'})
+endif
