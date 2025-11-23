@@ -1,0 +1,20 @@
+{
+  "main_func": {
+    "prefix": "mainf",
+    "body": [
+      "package main",
+      "",
+      "func main() {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Go main function"
+  },
+  "print_line": {
+    "prefix": "pl",
+    "body": [
+      "fmt.Println($1)$0"
+    ],
+    "description": "fmt.Println shortcut"
+  }
+}

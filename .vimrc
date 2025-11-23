@@ -81,6 +81,23 @@ set hlsearch
 set mouse=a
 
 " --- Key Mappings (VS Code feel) ---
+" --- Key Mappings (VS Code feel) ---
+" Toggle NERDTree (File explorer)
+nnoremap <C-n> :NERDTreeToggle<CR>
+
+" Fuzzy File Finder (VS Code's Ctrl+P/Cmd+P experience)
+nnoremap <C-p> :Files<CR>
+
+" Fuzzy Text/Buffer Finder (VS Code's Ctrl+T/Cmd+T)
+nnoremap <Leader>b :Buffers<CR>
+
+" Reload current .vimrc file
+nnoremap <Leader>r :source $MYVIMRC<CR>
+
+" Fugitive Git Status (VS Code's Source Control) <-- ADD THESE TWO LINES
+nnoremap <Leader>g :Git<CR>
+nnoremap <Leader>gs :Git<CR>
+
 " Toggle NERDTree (File explorer)
 nnoremap <C-n> :NERDTreeToggle<CR>
 
@@ -89,9 +106,6 @@ nnoremap <C-p> :Files<CR>
 
 " Fuzzy Text/Buffer Finder
 nnoremap <Leader>b :Buffers<CR>
-
-" Reload current .vimrc file
-nnoremap <Leader>r :source %<CR>
 
 " Smart Tab/Split Navigation (VS Code Window Switching)
 nnoremap <C-h> <C-w>h
