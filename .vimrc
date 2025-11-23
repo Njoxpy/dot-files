@@ -80,8 +80,9 @@ set hlsearch
 " --- Mouse Support ---
 set mouse=a
 
-" --- Key Mappings (VS Code feel) ---
-" --- Key Mappings (VS Code feel) ---
+" ==============================================================================
+" --- KEY MAPPINGS (VS Code feel) ---
+" ==============================================================================
 " Toggle NERDTree (File explorer)
 nnoremap <C-n> :NERDTreeToggle<CR>
 
@@ -94,18 +95,9 @@ nnoremap <Leader>b :Buffers<CR>
 " Reload current .vimrc file
 nnoremap <Leader>r :source $MYVIMRC<CR>
 
-" Fugitive Git Status (VS Code's Source Control) <-- ADD THESE TWO LINES
+" Fugitive Git Status (VS Code's Source Control)
 nnoremap <Leader>g :Git<CR>
 nnoremap <Leader>gs :Git<CR>
-
-" Toggle NERDTree (File explorer)
-nnoremap <C-n> :NERDTreeToggle<CR>
-
-" Fuzzy File Finder (VS Code's Ctrl+P/Cmd+P experience)
-nnoremap <C-p> :Files<CR>
-
-" Fuzzy Text/Buffer Finder
-nnoremap <Leader>b :Buffers<CR>
 
 " Smart Tab/Split Navigation (VS Code Window Switching)
 nnoremap <C-h> <C-w>h
@@ -139,7 +131,7 @@ let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=1
 
 " ==============================================================================
-" --- NEW ENHANCEMENTS START HERE ---
+" --- ENHANCEMENT SETTINGS ---
 " ==============================================================================
 
 " --- 1. Visual Indentation Guides Configuration (vim-indent-guides) ---
@@ -155,7 +147,6 @@ let g:indent_guides_auto_colors = 1
 
 " --- 2. CoC Visual Diagnostics (Error/Warning Icons in Sign Column) ---
 " This uses Nerd Font icons for clear error feedback, like VS Code.
-" Note: This must be defined AFTER 'colorscheme gruvbox'
 
 " Define colors for diagnostic signs (using Gruvbox palette)
 autocmd ColorScheme * highlight CocErrorSign guifg=#fb4934 guibg=none
