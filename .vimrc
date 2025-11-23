@@ -35,6 +35,31 @@ Plugin 'wakatime/vim-wakatime'
 " 7. Visual Indentation Guides (Fixed Plugin)
 Plugin 'preservim/vim-indent-guides' 
 
+" --- NEW SEXY PLUGINS ---
+" Modern Themes
+Plugin 'dracula/vim'
+Plugin 'joshdick/onedark.vim'
+Plugin 'sainnhe/sonokai'
+
+" Enhanced NERDTree
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+" Git Enhancements
+Plugin 'airblade/vim-gitgutter'
+
+" Floating Terminal
+Plugin 'voldikss/vim-floaterm'
+
+" Smooth Scrolling
+Plugin 'psliwka/vim-smoothie'
+
+" Start Screen
+Plugin 'mhinz/vim-startify'
+
+" Color Previews
+Plugin 'ap/vim-css-color'
+
 " --- Vundle End ---
 call vundle#end()
 filetype plugin indent on
@@ -43,8 +68,14 @@ filetype plugin indent on
 set encoding=utf-8
 set fileformat=unix
 set termguicolors             " Enable 24-bit RGB colors (essential for themes like gruvbox)
-colorscheme gruvbox
 set background=dark
+colorscheme onedark           " Sexy VSCode-like theme
+
+" Transparent background (modern terminal look)
+hi Normal guibg=NONE ctermbg=NONE
+hi LineNr guibg=NONE ctermbg=NONE
+hi SignColumn guibg=NONE ctermbg=NONE
+hi EndOfBuffer guibg=NONE ctermbg=NONE
 
 " --- UI Enhancements (Visual Clarity) ---
 syntax on
@@ -105,6 +136,10 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Floating Terminal Toggle
+nnoremap <silent> <C-`> :FloatermToggle<CR>
+tnoremap <silent> <C-`> <C-\><C-n>:FloatermToggle<CR>
+
 " --- CoC (IntelliSense) Mappings ---
 " Use <tab> for completion and snippets
 inoremap <silent><expr> <TAB>
@@ -127,8 +162,11 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> <leader>d <Plug>(coc-diagnostic-next)
 
 " --- Airline Status Line Settings ---
-let g:airline_theme='gruvbox' 
+let g:airline_theme='onedark' 
 let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#coc#enabled = 1
 
 " ==============================================================================
 " --- ENHANCEMENT SETTINGS ---
@@ -156,9 +194,28 @@ autocmd ColorScheme * highlight CocHintSign guifg=#b8bb26 guibg=none
 
 " Define the Nerd Font symbols for each diagnostic type
 if exists('*sign_define')
-    "  (Exclamation Triangle),  (Warning Sign),  (Info Circle), 💡 (Lightbulb)
-    call sign_define('CocError', {'text': '', 'texthl': 'CocErrorSign'})
-    call sign_define('CocWarning', {'text': '', 'texthl': 'CocWarningSign'})
-    call sign_define('CocInfo', {'text': '', 'texthl': 'CocInfoSign'})
+    "  (Exclamation Triangle),  (Warning Sign),  (Info Circle), 💡 (Lightbulb)
+    call sign_define('CocError', {'text': '', 'texthl': 'CocErrorSign'})
+    call sign_define('CocWarning', {'text': '', 'texthl': 'CocWarningSign'})
+    call sign_define('CocInfo', {'text': '', 'texthl': 'CocInfoSign'})
     call sign_define('CocHint', {'text': '💡', 'texthl': 'CocHintSign'})
 endif
+
+" ==============================================================================
+" --- STARTIFY DASHBOARD ---
+" ==============================================================================
+let g:startify_custom_header = [
+        \ '   ███╗   ██╗     ██╗ ██████╗ ██╗  ██╗██████╗ ██╗   ██╗',
+        \ '   ████╗  ██║     ██║██╔═══██╗╚██╗██╔╝██╔══██╗╚██╗ ██╔╝',
+        \ '   ██╔██╗ ██║     ██║██║   ██║ ╚███╔╝ ██████╔╝ ╚████╔╝ ',
+        \ '   ██║╚██╗██║██   ██║██║   ██║ ██╔██╗ ██╔═══╝   ╚██╔╝  ',
+        \ '   ██║ ╚████║╚█████╔╝╚██████╔╝██╔╝ ██╗██║        ██║   ',
+        \ '   ╚═╝  ╚═══╝ ╚════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝        ╚═╝   ',
+        \ ]
+
+" ==============================================================================
+" --- GITGUTTER SETTINGS ---
+" ==============================================================================
+let g:gitgutter_sign_added = '▎'
+let g:gitgutter_sign_modified = '▎'
+let g:gitgutter_sign_removed = '▎'
