@@ -14,7 +14,7 @@
     },
     "files.autoSave": "onWindowChange",
     "workbench.colorTheme": "Default Dark+",
-    "workbench.iconTheme": "vscode-icons",
+    "workbench.iconTheme": "material-icon-theme",
     "emmet.syntaxProfiles": {
         "javascript": "jsx"
     },

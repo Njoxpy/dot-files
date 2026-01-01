@@ -2,11 +2,7 @@
   "rust-analyzer.checkOnSave.command": "clippy",
   "rust-analyzer.inlayHints.typeHints.enable": true,
   "rust-analyzer.inlayHints.parameterHints.enable": true,
+  "rust-analyzer.hover.actions.enable": true,
   "rust-analyzer.completion.autoimport.enable": true,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "rust",
-    "go",
-    "json"
-  ],
-  "snippets.userSnippetsDirectory": "~/.config/coc/snippets"
+  "coc.preferences.formatOnSaveFiletypes": ["rust", "go", "json"]
 }

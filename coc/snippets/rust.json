@@ -1,0 +1,33 @@
+{
+  "Main Function": {
+    "prefix": "main",
+    "body": [
+      "fn main() {",
+      "\t${0}",
+      "}"
+    ],
+    "description": "Standard main function"
+  },
+  "Print Line": {
+    "prefix": "pl",
+    "body": [
+      "println!(\"${1:}\", ${2});"
+    ],
+    "description": "println! macro"
+  },
+  "Unit Test": {
+    "prefix": "test",
+    "body": [
+      "#[cfg(test)]",
+      "mod tests {",
+      "    use super::*;",
+      "",
+      "    #[test]",
+      "    fn test_${1:works}() {",
+      "        assert_eq!(2 + 2, 4);",
+      "    }",
+      "}"
+    ],
+    "description": "Rust test module"
+  }
+}

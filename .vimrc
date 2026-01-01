@@ -186,19 +186,18 @@ let g:indent_guides_auto_colors = 1
 " --- 2. CoC Visual Diagnostics (Error/Warning Icons in Sign Column) ---
 " This uses Nerd Font icons for clear error feedback, like VS Code.
 
-" Define colors for diagnostic signs (using Gruvbox palette)
+" Define colors for diagnostic signs
 autocmd ColorScheme * highlight CocErrorSign guifg=#fb4934 guibg=none
 autocmd ColorScheme * highlight CocWarningSign guifg=#fabd2f guibg=none
 autocmd ColorScheme * highlight CocInfoSign guifg=#83a598 guibg=none
 autocmd ColorScheme * highlight CocHintSign guifg=#b8bb26 guibg=none
 
-" Define the Nerd Font symbols for each diagnostic type
+" Define symbols (Ensure these are 1 or 2 characters max)
 if exists('*sign_define')
-    "  (Exclamation Triangle),  (Warning Sign),  (Info Circle), 💡 (Lightbulb)
-    call sign_define('CocError', {'text': '', 'texthl': 'CocErrorSign'})
-    call sign_define('CocWarning', {'text': '', 'texthl': 'CocWarningSign'})
-    call sign_define('CocInfo', {'text': '', 'texthl': 'CocInfoSign'})
-    call sign_define('CocHint', {'text': '💡', 'texthl': 'CocHintSign'})
+    call sign_define('CocError',   {'text': '✘', 'texthl': 'CocErrorSign'})
+    call sign_define('CocWarning', {'text': '▲', 'texthl': 'CocWarningSign'})
+    call sign_define('CocInfo',    {'text': 'ℹ', 'texthl': 'CocInfoSign'})
+    call sign_define('CocHint',    {'text': '💡', 'texthl': 'CocHintSign'})
 endif
 
 " ==============================================================================
