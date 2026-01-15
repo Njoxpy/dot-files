@@ -60,6 +60,9 @@ Plugin 'mhinz/vim-startify'
 " Color Previews
 Plugin 'ap/vim-css-color'
 
+" Markdown Previews 
+Plugin 'OXY2DEV/markview.nvim'
+
 " --- Vundle End ---
 call vundle#end()
 filetype plugin indent on

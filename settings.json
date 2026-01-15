@@ -1,0 +1,80 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.productIconTheme": "fluent-icons",
+  "workbench.sideBar.location": "left",
+  "workbench.startupEditor": "none",
+  "workbench.activityBar.location": "bottom", 
+  "window.titleBarStyle": "custom",
+  "window.dialogStyle": "custom",
+
+  // --- Typography (Clean & Readable) ---
+  "editor.fontFamily": "'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace",
+  "editor.fontSize": 14,
+  "editor.lineHeight": 1.7,
+  "editor.fontLigatures": true,
+  "editor.fontWeight": "400",
+  "editor.letterSpacing": 0.5,
+
+  "go.diagnostic.vulncheck": "Off",
+
+
+  // --- Editor Polish & Minimalism ---
+  "editor.minimap.enabled": false,
+  "editor.scrollbar.vertical": "hidden",
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.semanticHighlighting.enabled": true,
+  "editor.renderLineHighlight": "all",
+  "editor.cursorBlinking": "expand",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.smoothScrolling": true,
+  "workbench.list.smoothScrolling": true,
+  "terminal.integrated.smoothScrolling": true,
+
+  // --- Custom Color Overrides (The "Cyber-Pastel" Glow) ---
+  "workbench.colorCustomizations": {
+    "[Catppuccin Macchiato]": {
+      // Backgrounds
+      "editor.background": "#1e1e2e",
+      "sideBar.background": "#181825",
+      "sideBar.border": "#cba6f733",
+      "activityBar.background": "#11111b",
+      "statusBar.background": "#11111b",
+      "statusBar.foreground": "#cba6f7",
+      
+      // Editor Accents
+      "editorLineNumber.activeForeground": "#cba6f7",
+      "editorCursor.foreground": "#f5e0dc",
+      "tab.activeBorder": "#cba6f7",
+      "editor.lineHighlightBackground": "#ffffff0a",
+      "editor.lineHighlightBorder": "#cba6f733",
+      
+      // Floating UI
+      "editorSuggestWidget.background": "#181825",
+      "editorSuggestWidget.border": "#cba6f733",
+      "list.hoverBackground": "#313244"
+    }
+  },
+
+  // --- Clean Tabs & Breadcrumbs ---
+  "workbench.editor.showTabs": "single", 
+  "breadcrumbs.enabled": false, 
+  "explorer.compactFolders": true,
+  "workbench.statusBar.visible": false,
+  "window.customTitleBarVisibility": "windowed",
+  "workbench.navigationControl.enabled": false,
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false,
+  "window.menuBarVisibility": "compact",
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "editor.formatOnSave": true,
+  "notebook.formatOnSave.enabled": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
